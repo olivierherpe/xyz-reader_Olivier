@@ -8,16 +8,18 @@
     android:layout_marginRight="4dp"
     android:layout_marginTop="4dp"
     android:layout_marginBottom="4dp"
+    app:cardElevation="1dp"
     android:clickable="true"
     android:focusable="true"
 
-    app:cardBackgroundColor="@color/colorAccent"
+    app:cardBackgroundColor="@color/theme_accent"
     android:foreground="?selectableItemBackground">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/theme_primary_light">
 
         <!--suppress AndroidLintContentDescription -->
         <com.example.xyzreader.ui.DynamicHeightNetworkImageView
@@ -36,7 +38,7 @@
             android:paddingTop="16dp"
             android:paddingRight="16dp"
             android:paddingBottom="4dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/theme_accent"
             android:fontFamily="sans-serif"
             android:textStyle="bold"
             android:ellipsize="end"
