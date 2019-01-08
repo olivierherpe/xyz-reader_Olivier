@@ -34,6 +34,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
+import com.squareup.picasso.Picasso;
 
 /**
  * A fragment representing a single Article detail screen. This fragment is
@@ -238,8 +239,14 @@ public class ArticleDetailFragment extends Fragment implements
                                 + "</font>"));
 
             }
-            bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
-            ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
+           //before reviewer's comments integration
+            // bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY).replaceAll("(\r\n|\n)", "<br />")));
+           bodyView.setText(Html.fromHtml(mCursor.getString(ArticleLoader.Query.BODY)
+           .substring(0,1000)
+           .replaceAll("(\r\n|\n)", "<br />")));
+            Picasso.get().load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhotoView);
+          //  Picasso.get().load(mCursor.getString(ArticleLoader.Query.PHOTO_URL)).into(mPhotoView);
+          /*  ImageLoaderHelper.getInstance(getActivity()).getImageLoader()
                     .get(mCursor.getString(ArticleLoader.Query.PHOTO_URL), new ImageLoader.ImageListener() {
                         @Override
                         public void onResponse(ImageLoader.ImageContainer imageContainer, boolean b) {
@@ -258,7 +265,7 @@ public class ArticleDetailFragment extends Fragment implements
                         public void onErrorResponse(VolleyError volleyError) {
 
                         }
-                    });
+                    });*/
         } else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");

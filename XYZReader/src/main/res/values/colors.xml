@@ -23,4 +23,5 @@
     <color name="theme_primary_light">#7e57c2</color>
     <color name="theme_accent">#03dac6</color>
 
+    <color name="secondary_text">#03dac6</color>
 </resources>
